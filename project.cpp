@@ -6,12 +6,6 @@
 #include <time.h>
 using namespace std;
 
-// priyank kumawat - 190280109058
-// sanjana pandya  - 190280109082
-// aafrin          - 190280109066
-// ramsingh samad  - 1902801091
-// amit            - 190280109098
-
 string ret_time()
 {
     time_t tim = time(0);
