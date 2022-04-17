@@ -161,14 +161,14 @@ public:
 
             if (type_acc == "fixed" && balance < 1000)
             {
-                balance -= (balance / 10);
-                set_balance(-(balance / 10));
+                balance -= (balance / 5);
+                set_balance(-(balance / 5));
             }
 
             if (type_acc == "current" && balance < 10000)
             {
-                balance -= (balance / 20);
-                set_balance(-(balance / 20));
+                balance -= (balance / 7);
+                set_balance(-(balance / 7));
             }
 
             set_balance(b);
