@@ -1,16 +1,16 @@
-#include <iostream>
-#include <vector>
-#include <windows.h>
-#include <fstream>
-#include <sstream>
-#include <time.h>
+#include <iostream>  //rand()
+#include <vector>    // array vector<int>
+#include <windows.h> // Sleep
+#include <fstream>   // files
+#include <sstream>  //concatenate string
+#include <time.h>   // current time
 using namespace std;
 
-// priyank kumawat - 190280109058
-// sanjana pandya  - 190280109082
-// aafrin          - 190280109066
-// ramsingh samad  - 1902801091
-// amit            - 190280109098
+// Priyank kumawat - 190280109058
+// Sanjana pandya  - 190280109082
+// Afrin mankad    - 190280109066
+// Ramshi samad    - 190280109120
+// Amit prajapati  - 190280109098
 
 string ret_time()
 {
@@ -24,7 +24,6 @@ string ret_time()
 class acc_open
 {
     int acc_num;
-    string op_date;
 
 protected:
     long long int mob_no;
@@ -32,7 +31,7 @@ protected:
     string type_acc, name, pass, dob, ctran;
 
 public:
-    // a=name b=mob_num e=mail i=dob t=type of account opening p=pass
+    // a=name b=mob_num i=dob t=type of account opening p=pass
     acc_open() {}
     acc_open(string a, long long int b, string i, string p)
     {
@@ -45,9 +44,12 @@ public:
         srand(time(0));
         acc_num = rand();
 
-        cout << "Your accout has been created succesfully..... "
-             << "Your account number is " << acc_num << endl
-             << "Congratulation's on becoming part of x-bank." << endl;
+        cout << "\t\t\tYour accout has been created succesfully..... \n";
+        Sleep(2000);
+        cout << "\t\t\tYour account number is " << acc_num << endl;
+        Sleep(1000);
+        cout << "\t\t\tCongratulation's on becoming part of Padusan-bank." << endl;
+        Sleep(1000);
 
         balance = 0;
 
@@ -67,36 +69,26 @@ public:
         dob = i;
         pass = p;
         type_acc = t;
+        srand(time(0));
+        acc_num = rand();
+        cout << "\t\t\tYour accout has been created succesfully..... \n";
+        Sleep(2000);
+        cout << "\t\t\tYour account number is " << acc_num << endl;
+        Sleep(1000);
+        cout << "\t\t\tCongratulation's on becoming part of Padusan-bank." << endl;
+        Sleep(1000);
+
         if (type_acc == "fixed")
-        {
-            srand(time(0));
-            acc_num = rand();
-            cout << "\t\t\tYour accout has been created succesfully..... \n";
-                Sleep(2000);
-            cout << "\t\t\tYour account number is " << acc_num << endl;
-                Sleep(1000);
-            cout << "\t\t\tCongratulation's on becoming part of Padusan-bank." << endl;
-                Sleep(1000);
             balance = 1000;
-        }
+
         else
-        {
-            srand(time(0));
-            acc_num = rand();
-            cout << "\t\t\tYour accout has been created succesfully..... \n";
-                Sleep(2000);
-            cout << "\t\t\tYour account number is " << acc_num << endl;
-                Sleep(1000);
-            cout << "Congratulation's on becoming part of Padusan-bank." << endl;
-                Sleep(1000);
             balance = 10000;
-        }
+
         ostringstream os;
         os << name << "_" << mob_no << ".txt";
         ctran = os.str();
 
         fstream out_tran(ctran, ios::app);
-        out_tran << '\n';
         out_tran << balance << ", ";
         out_tran << ret_time();
         out_tran.close();
@@ -148,7 +140,7 @@ public:
         }
         in_tran.close();
 
-        cout << "\t\t\t " << name << "\t\t " << balance << endl;
+        cout << "\t\t Name :" << name << "\tBalance :" << balance << endl;
     }
 
     void transaction(float b)
@@ -156,7 +148,7 @@ public:
         balance += b;
         try
         {
-            if ( balance < 0)
+            if (balance < 0)
                 throw -1;
 
             if (type_acc == "fixed" && balance < 1000)
@@ -172,12 +164,12 @@ public:
             }
 
             set_balance(b);
-                   
-            cout<< "Current balance : " << balance << endl;
+
+            cout << "\t Current balance : " << balance << endl;
         }
         catch (int v)
         {
-            cout << "Insufficient amount" << endl;
+            cout << "\t Insufficient amount" << endl;
         }
     }
 
@@ -210,17 +202,17 @@ public:
     ~login()
     {
         Sleep(2000);
-        cout << "Log out....." << endl;
+        cout << "\tLog out....." << endl;
     }
 };
 
 bool validation(string p)
 {
     int n = p.size();
-    int arr[4] = {0};
+    int arr[4] = {0}; // 0 0 0 0   Pri123@# 1 1 1 1
     if (!(n >= 8 && n <= 15))
     {
-        cout << "Length must be more than 8 and less than 15" << endl;
+        cout << "\tLength must be more than 8 and less than 15" << endl;
         return false;
     }
     for (int i = 0; i < n; i++)
@@ -248,22 +240,22 @@ bool validation(string p)
     }
     if (arr[0] == 0)
     {
-        cout << "Add capital letter's " << endl;
+        cout << "\tAdd capital letter's " << endl;
         return false;
     }
     if (arr[1] != 1)
     {
-        cout << "Add small letter's" << endl;
+        cout << "\tAdd small letter's" << endl;
         return false;
     }
     if (arr[2] != 1)
     {
-        cout << "Add number's" << endl;
+        cout << "\tAdd number's" << endl;
         return false;
     }
     if (arr[3] != 1)
     {
-        cout << "Add special character's like @#$%&" << endl;
+        cout << "\tAdd special character's like @#$%&" << endl;
         return false;
     }
     return true;
@@ -322,7 +314,7 @@ int main()
 
         else if (type == "fixed" || type == "current")
         {
-            cout << "\t\t We are opening your saving account \t"
+            cout << "\t\t We are opening your saving account \n"
                  << "\t\t\t Please wait...." << endl;
             Sleep(5000);
             acc_open user(name, mob_num, dob, pass, type);
@@ -331,13 +323,16 @@ int main()
 
         else
         {
-            cout << "You have enter wrong type of account number.."
-                 << "Please choose from s-saving, f-fixed, c-current." << endl;
+            cout << "\tYou have enter wrong type of account number.."
+                 << "\tPlease choose from s-saving, f-fixed, c-current." << endl;
         }
-        cout<<"\t\t Do you want to log-in? ";
-            char cho;
-            cin>>cho;
-            if(cho=='y' || cho=='Y') choose=2;
+        cout << "\t\t Do you want to log-in? (y/n)";
+        char cho;
+        cin >> cho;
+        if (cho == 'y' || cho == 'Y')
+            choose = 2;
+        else
+            return 0;
     }
     if (choose == 2)
     {
@@ -377,30 +372,38 @@ int main()
             cout << "\t\t\t 1 for Withdraw\n"
                  << "\t\t\t 2 for Deposite\n"
                  << "\t\t\t 3 for Last transaction\n\t\t\t";
-            cin >> wide;
             float amm;
 
-            switch (wide)
-            {
-            case 1:
-                cout << "\t\t Enter the amount : ";
-                cin >> amm;
-                obj.transaction(-amm);
-                break;
+            while (true)
+            {   cout<<"\t\t\t";
+                cin >> wide;
+                switch (wide)
+                {
+                case 1:
+                    cout << "\t\t Enter the amount : ";
+                    cin >> amm;
+                    obj.transaction(-amm);
+                    break;
 
-            case 2:
-                cout << "\t\t Enter the amount : ";
-                cin >> amm;
-                obj.transaction(amm);
-                break;
+                case 2:
+                    cout << "\t\t Enter the amount : ";
+                    cin >> amm;
+                    obj.transaction(amm);
+                    break;
 
-            case 3:
-                obj.print_trans();
-                break;
+                case 3:
+                    obj.print_trans();
+                    break;
 
-            default:
-                cout << "\t\t Choose the correct option" << endl;
-                break;
+                default:
+                    cout << "\t\t Choose the correct option" << endl;
+                    break;
+                }
+                int c=1;
+                cout<<"\t Do you want to log out or stay ?(1/2) ";               
+                cin>>c;
+                if(c==1) break;
+                else continue;
             }
         }
         else
