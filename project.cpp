@@ -6,12 +6,6 @@
 #include <time.h>   // current time
 using namespace std;
 
-// Priyank kumawat - 190280109058
-// Sanjana pandya  - 190280109082
-// Afrin mankad    - 190280109066
-// Ramshi samad    - 190280109120
-// Amit prajapati  - 190280109098
-
 string ret_time()
 {
     time_t tim = time(0);
@@ -375,7 +369,7 @@ int main()
             float amm;
 
             while (true)
-            {   cout<<"\t\t\t";
+            {   cout<<"\t 1-withdraw, 2-deposit, 3-transation : ";
                 cin >> wide;
                 switch (wide)
                 {
