@@ -14,3 +14,5 @@ Ac    pass  name bal type   mobile
 23066 Samad8485@ samad 10000 current 846762476 
 25708 Amit76#$ amit 0 saving 4356576 
 23391 Naren11@ narendra 10000 current 9737871137 
+4072 Rahul123@ rahul 10000 current 3647253465 
+13792 SeCureSMP@123 sajid 1000 fixed 9909267646 

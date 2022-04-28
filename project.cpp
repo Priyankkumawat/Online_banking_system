@@ -2,8 +2,8 @@
 #include <vector>    // array vector<int>
 #include <windows.h> // Sleep
 #include <fstream>   // files
-#include <sstream>  //concatenate string
-#include <time.h>   // current time
+#include <sstream>   //concatenate string
+#include <time.h>    // current time
 using namespace std;
 
 string ret_time()
@@ -42,7 +42,7 @@ public:
         Sleep(2000);
         cout << "\t\t\tYour account number is " << acc_num << endl;
         Sleep(1000);
-        cout << "\t\t\tCongratulation's on becoming part of Padusan-bank." << endl;
+        cout << "\t\t\tCongratulation's on becoming part of Virtual-Bank." << endl;
         Sleep(1000);
 
         balance = 0;
@@ -69,7 +69,7 @@ public:
         Sleep(2000);
         cout << "\t\t\tYour account number is " << acc_num << endl;
         Sleep(1000);
-        cout << "\t\t\tCongratulation's on becoming part of Padusan-bank." << endl;
+        cout << "\t\t\tCongratulation's on becoming part of Virtual-Bank." << endl;
         Sleep(1000);
 
         if (type_acc == "fixed")
@@ -257,15 +257,15 @@ bool validation(string p)
 
 int main()
 {
-    cout << "\t\t\t Welcome To Padusan-bank" << endl;
+    cout << "\t\t\t Welcome To Virtual-Bank" << endl;
 
     string name, dob;
     long long int mob_num;
     string type, pass;
 
     int choose;
-    cout << "\t\t\tSign-Up or Log-in \n"
-         << "Enter 1 for account opening 2 for login \t";
+    cout << "\t\t\t    Sign-Up or Log-in \n"
+         << "Enter 1 for account opening 2 for login : ";
     cin >> choose;
 
     if (choose == 1)
@@ -318,7 +318,7 @@ int main()
         else
         {
             cout << "\tYou have enter wrong type of account number.."
-                 << "\tPlease choose from s-saving, f-fixed, c-current." << endl;
+                 << "\tPlease choose saving,fixed,current." << endl;
         }
         cout << "\t\t Do you want to log-in? (y/n)";
         char cho;
@@ -330,84 +330,94 @@ int main()
     }
     if (choose == 2)
     {
-        cout << "\tEntr account number : ";
-        string ac;
-        cin >> ac;
-        string p;
-        cout << "\tEnter password : ";
-        cin >> p;
-
-        fstream ain("acc_detail.txt", ios::in);
         string i1, i2, i3, i4, i5, i6;
-        bool flag = 0;
-        while (ain.eof() != 1)
+        while (true)
         {
-            ain >> i1;
-            ain >> i2;
-            if (i1 == ac && i2 == p)
+            cout << "\tEntr account number : ";
+            string ac;
+            cin >> ac;
+            string p;
+            cout << "\tEnter password : ";
+            cin >> p;
+
+            fstream ain("acc_detail.txt", ios::in);
+            bool flag = 0;
+            while (ain.eof() != 1)
             {
-                flag = 1;
-                ain >> i3;
-                ain >> i4;
-                ain >> i5;
-                ain >> i6;
+                ain >> i1;
+                ain >> i2;
+                if (i1 == ac && i2 == p)
+                {
+                    flag = 1;
+                    ain >> i3;
+                    ain >> i4;
+                    ain >> i5;
+                    ain >> i6;
+                    break;
+                }
+                else
+                    continue;
+            }
+            ain.close();
+            if (flag)
+                break;
+            else
+            {
+                char s;
+                cout << "\t\t Account number/Password is wrong" << endl;
+                cout << "\t Do you want to try again? (y/n)";
+                cin >> s;
+                if (s == 'y' || s == 'Y')
+                    continue;
+                else
+                    return 0;
+            }
+        }
+
+        login obj(i3, i5, i6);
+        int wide;
+        cout << "\t\t Do you want to withdraw,deposite or see last transaction ? " << endl;
+        cout << "\t\t\t 1 for Withdraw\n"
+             << "\t\t\t 2 for Deposite\n"
+             << "\t\t\t 3 for Last transaction\n\t\t\t";
+        float amm;
+
+        while (true)
+        {
+            cout << "\t 1-withdraw, 2-deposit, 3-transation : ";
+            cin >> wide;
+            switch (wide)
+            {
+            case 1:
+                cout << "\t\t Enter the amount : ";
+                cin >> amm;
+                obj.transaction(-amm);
+                break;
+
+            case 2:
+                cout << "\t\t Enter the amount : ";
+                cin >> amm;
+                obj.transaction(amm);
+                break;
+
+            case 3:
+                obj.print_trans();
+                break;
+
+            default:
+                cout << "\t\t Choose the correct option" << endl;
                 break;
             }
+            int c = 1;
+            cout << "\t Do you want to log out or stay ?(1/2) ";
+            cin >> c;
+            if (c == 1)
+                break;
             else
                 continue;
         }
-        ain.close();
-
-        if (flag)
-        {
-            login obj(i3, i5, i6);
-            int wide;
-            cout << "\t\t Do you want to withdraw,deposite or see last transaction ? " << endl;
-            cout << "\t\t\t 1 for Withdraw\n"
-                 << "\t\t\t 2 for Deposite\n"
-                 << "\t\t\t 3 for Last transaction\n\t\t\t";
-            float amm;
-
-            while (true)
-            {   cout<<"\t 1-withdraw, 2-deposit, 3-transation : ";
-                cin >> wide;
-                switch (wide)
-                {
-                case 1:
-                    cout << "\t\t Enter the amount : ";
-                    cin >> amm;
-                    obj.transaction(-amm);
-                    break;
-
-                case 2:
-                    cout << "\t\t Enter the amount : ";
-                    cin >> amm;
-                    obj.transaction(amm);
-                    break;
-
-                case 3:
-                    obj.print_trans();
-                    break;
-
-                default:
-                    cout << "\t\t Choose the correct option" << endl;
-                    break;
-                }
-                int c=1;
-                cout<<"\t Do you want to log out or stay ?(1/2) ";               
-                cin>>c;
-                if(c==1) break;
-                else continue;
-            }
-        }
-        else
-        {
-            cout << "\t\t Account number/Password is wrong" << endl;
-        }
     }
     else
-    {
         cout << "\t\tChoose appropriate option " << endl;
-    }
     return 0;
 }
