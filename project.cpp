@@ -42,8 +42,6 @@ public:
         Sleep(2000);
         cout << "\t\t\tYour account number is " << acc_num << endl;
         Sleep(1000);
-        cout << "\t\t\tCongratulation's on becoming part of Virtual-Bank." << endl;
-        Sleep(1000);
 
         balance = 0;
 
@@ -68,8 +66,6 @@ public:
         cout << "\t\t\tYour accout has been created succesfully..... \n";
         Sleep(2000);
         cout << "\t\t\tYour account number is " << acc_num << endl;
-        Sleep(1000);
-        cout << "\t\t\tCongratulation's on becoming part of Virtual-Bank." << endl;
         Sleep(1000);
 
         if (type_acc == "fixed")
@@ -97,6 +93,10 @@ public:
         aout << type_acc << " ";
         aout << mob_no << " \n";
         aout.close();
+    }
+    ~acc_open(){
+        cout << "\t\t\tCongratulation's on becoming part of Virtual-Bank." << endl;
+        Sleep(1000);
     }
 };
 
