@@ -27,33 +27,33 @@ protected:
 public:
     // a=name b=mob_num i=dob t=type of account opening p=pass
     acc_open() {}
-    acc_open(string a, long long int b, string i, string p)
-    {
-        name = a;
-        mob_no = b;
-        dob = i;
-        pass = p;
-        type_acc = "saving";
+    // acc_open(string a, long long int b, string i, string p)
+    // {
+    //     name = a;
+    //     mob_no = b;
+    //     dob = i;
+    //     pass = p;
+    //     type_acc = "saving";
 
-        srand(time(0));
-        acc_num = rand();
+    //     srand(time(0));
+    //     acc_num = rand();
 
-        cout << "\t\t\tYour accout has been created succesfully..... \n";
-        Sleep(2000);
-        cout << "\t\t\tYour account number is " << acc_num << endl;
-        Sleep(1000);
+    //     cout << "\t\t\tYour accout has been created succesfully..... \n";
+    //     Sleep(2000);
+    //     cout << "\t\t\tYour account number is " << acc_num << endl;
+    //     Sleep(1000);
 
-        balance = 0;
+    //     balance = 0;
 
-        ostringstream os;
-        os << name << "_" << mob_no << ".txt";
-        ctran = os.str();
+    //     ostringstream os;
+    //     os << name << "_" << mob_no << ".txt";
+    //     ctran = os.str();
 
-        fstream out_tran(ctran, ios::app);
-        out_tran << balance << ", ";
-        out_tran << ret_time();
-        out_tran.close();
-    }
+    //     fstream out_tran(ctran, ios::app);
+    //     out_tran << balance << ", ";
+    //     out_tran << ret_time();
+    //     out_tran.close();
+    // }
     acc_open(string a, long long int b, string i, string p, string t)
     {
         name = a;
@@ -70,7 +70,8 @@ public:
 
         if (type_acc == "fixed")
             balance = 1000;
-
+        else if (type_acc == "saving")
+            balance = 0;
         else
             balance = 10000;
 
@@ -297,16 +298,16 @@ int main()
         cout << "\t Enter the type of account you want to start with : ";
         cin >> type;
 
-        if (type == "saving")
-        {
-            cout << "\t\t We are opening your saving account \n"
-                 << "\t\t\t Please wait...." << endl;
-            Sleep(5000);
-            acc_open user(name, mob_num, dob, pass);
-            user.save_data();
-        }
+        // if (type == "saving")
+        // {
+        //     cout << "\t\t We are opening your saving account \n"
+        //          << "\t\t\t Please wait...." << endl;
+        //     Sleep(5000);
+        //     acc_open user(name, mob_num, dob, pass);
+        //     user.save_data();
+        // }
 
-        else if (type == "fixed" || type == "current")
+        if (type == "fixed" || type == "current" || type == "saving")
         {
             cout << "\t\t We are opening your saving account \n"
                  << "\t\t\t Please wait...." << endl;

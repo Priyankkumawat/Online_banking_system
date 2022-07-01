@@ -1,23 +1,11 @@
 Ac    pass  name bal type   mobile  
-24868 Rj987667&# rahul 10000 current 9876543210 
 25610 Pur0302$# purvesh 0 saving 8765789658 
 25904 Samu12@# samu 1000 fixed 8767857483 
 26691 Aaa123$# aafrin 10000 current 486264236 
-<<<<<<< HEAD
 15902 San208@# Saniya 0 saving 7482734872 
 17037 Hejhwfv@123 hemal 10000 current 9537164272 
 23066 Samad8485@ samad 10000 current 846762476 
-=======
-9074 Pnm208@# poonam 10000 current 9428260355 
-31533 San410@# sanjana 10000 current 71238172
-15902 San208@# Saniya 0 saving 7482414244 
-14386 LDstud2022$ priyank 10000 current 7749817412
-17562 Atul06$$ atul 10000 current 9727219812
-21200 Sanket1234@ sanket 0 saving 82374872
-17037 Hejhwfv@123 hemal 10000 current 9537164272 
-23066 Samad8485@ samad 10000 current 846324324 
-25708 Amit76#$ amit 0 saving 4356576 
-23391 Naren11@ narendra 10000 current 92435267 
->>>>>>> 4498a3570bcf262bb640fa3be2d9906210efbb87
+17562 Atul06$$ atul 10000 current 9727110355
 4072 Rahul123@ rahul 10000 current 3647253465 
 13792 SeCureSMP@123 sajid 1000 fixed 992356476
+16898 Sanku14@# sanku 0 saving 8199961553 
