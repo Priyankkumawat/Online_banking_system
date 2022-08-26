@@ -21,7 +21,7 @@ class acc_open
 
 protected:
     long long int mob_no;
-    float balance;
+    long double balance;
     string type_acc, name, pass, dob, ctran;
 
 public:
@@ -67,11 +67,12 @@ public:
         aout << type_acc << " ";
         aout << mob_no << " \n";
         aout.close();
-    }
-    ~acc_open(){
+
         cout << "\t\t\tCongratulation's on becoming part of Virtual-Bank." << endl;
         Sleep(1000);
     }
+
+    ~acc_open(){}   
 };
 
 class login : private acc_open
@@ -81,7 +82,7 @@ class login : private acc_open
         string s = ret_time();
         fstream out_tra(ctran, ios::app);
         out_tra << '\n';
-        out_tra << bal << ',';
+        out_tra << bal << ", ";
         out_tra << s;
         out_tra.close();
     }
@@ -108,7 +109,9 @@ public:
         }
         in_tran.close();
 
-        cout << "\t\t Name :" << name << "\tBalance :" << balance << endl;
+        cout << "\t\t Name :" << name << "\tBalance :" << balance 
+        <<"\tType :"<<type
+        << endl;
     }
 
     void transaction(float b)
@@ -121,15 +124,15 @@ public:
 
             if (type_acc == "fixed" && balance < 1000)
             {
-                balance -= (balance / 5);
-                set_balance(-(balance / 5));
+                set_balance(-(balance*0.02));
+                balance -= (balance*0.02);
             }
 
             if (type_acc == "current" && balance < 10000)
             {
-                balance -= (balance / 7);
-                set_balance(-(balance / 7));
-            }
+                set_balance(-(balance * 0.05));
+                balance -= (balance * 0.05);
+            }     
 
             set_balance(b);
 
@@ -160,7 +163,7 @@ public:
             a += s[i - 1];
             in_tran.seekg(-a - x, in_tran.end);
             getline(in_tran, s2, '\n');
-            cout << s2 << endl;
+            cout <<"\t\t\t"<< s2 << endl;
             x += 2;
             i--;
         }
@@ -270,7 +273,7 @@ int main()
 
         cout << "\t Enter the type of account you want to start with : ";
         cin >> type;
-        
+
         if (type == "fixed" || type == "current" || type == "saving")
         {
             cout << "\t\t We are opening your saving account \n"
@@ -342,14 +345,14 @@ int main()
         login obj(i3, i5, i6);
         int wide;
         cout << "\t\t Do you want to withdraw,deposite or see last transaction ? " << endl;
-        cout << "\t\t\t 1 for Withdraw\n"
-             << "\t\t\t 2 for Deposite\n"
-             << "\t\t\t 3 for Last transaction\n\t\t\t";
+
         float amm;
 
         while (true)
         {
-            cout << "\t 1-withdraw, 2-deposit, 3-transation : ";
+            cout << "\t\t\t 1 for Withdraw\n"
+                 << "\t\t\t 2 for Deposite\n"
+                 << "\t\t\t 3 for Last transaction\n\t\t\t";
             cin >> wide;
             switch (wide)
             {
@@ -370,14 +373,14 @@ int main()
                 break;
 
             default:
-                cout << "\t\t Choose the correct option" << endl;
+                cout << "\t\t Choose the correct option next time" << endl;
                 break;
             }
             int c = 1;
             cout << "\t Do you want to log out or stay ?(1/2) ";
             cin >> c;
             if (c == 1)
-                break;
+                return 0;
             else
                 continue;
         }

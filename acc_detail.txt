@@ -8,4 +8,5 @@ Ac    pass  name bal type   mobile
 17562 Atul06$$ atul 10000 current 9727110355
 4072 Rahul123@ rahul 10000 current 3647253465 
 13792 SeCureSMP@123 sajid 1000 fixed 992356476
-16898 Sanku14@# sanku 0 saving 8199961553 
+16898 Sanku14@# sanku 0 saving 8199961553 18201 Anmol19@# anmol 0 saving 7041955570 
+17387 Bank1980@ Priank 10000 current 7434919861 
